@@ -49,6 +49,16 @@ public:
         return (x*rhs.x) + (y*rhs.y) + (z*rhs.z);
     }
 
+    Cartesian3 operator+(const double& value) const
+    {
+        return Cartesian3(x + value, y + value, z + value);
+    }
+
+    Cartesian3 operator*(const double& value) const
+    {
+        return Cartesian3(x * value, y * value, z * value);
+    }
+
     Cartesian3 operator-() const
     {
         return Cartesian3(-x, -y, -z);

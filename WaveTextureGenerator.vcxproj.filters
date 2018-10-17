@@ -28,6 +28,9 @@
     <ClInclude Include="stb_image_write.h">
       <Filter>Source Files</Filter>
     </ClInclude>
+    <ClInclude Include="VertexData.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="WaveTextureGenerator.cpp">
@@ -49,5 +52,16 @@
     <CopyFileToFolders Include="ffmpeg\ffmpeg.exe">
       <Filter>ffmpeg</Filter>
     </CopyFileToFolders>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="fftw-3.3.5\libfftw3-3.dll">
+      <Filter>Source Files\fftw-3.3.5</Filter>
+    </None>
+    <None Include="fftw-3.3.5\libfftw3f-3.dll">
+      <Filter>Source Files\fftw-3.3.5</Filter>
+    </None>
+    <None Include="fftw-3.3.5\libfftw3l-3.dll">
+      <Filter>Source Files\fftw-3.3.5</Filter>
+    </None>
   </ItemGroup>
 </Project>

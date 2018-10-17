@@ -3,6 +3,8 @@
 #include <complex>
 #include <random>
 #include "Cartesian3.h"
+#include "VertexData.h"
+#include <mutex>
 
 #define GRAVITY 9.8 // Acceleration due to gravity (m/s^2).
 
@@ -16,8 +18,8 @@ typedef std::complex<float> complex;
 * This class assumes the 3ds Max coordinate system, i.e. X- and Y-axes are in the horizontal plane and the Z-axis goes up and down.
 */
 class tessendorf {
-    std::tr1::mt19937 engine;
-    std::tr1::normal_distribution<float> dist;
+    std::mt19937 engine;
+    std::normal_distribution<float> dist;
 
     float               omega_0;                    /* Dispersion-sub-naught; calculated using Tessendorf's equation (17). */
     int                 M;                          /* Resolution of grid along X-axis (16 <= M <= 2048; where M = 2^x for integer x). */
@@ -33,17 +35,11 @@ class tessendorf {
     float               T;                          /* Time of one phase of simulation. */
     unsigned long       seed;                       /* Seed for the pseudorandom number generator. */
 
-    Cartesian3*         vertices;
-    complex*            h_tildes_in;
-    complex*            disp_x_in;
-    complex*            disp_y_in;
-    complex*            h_tildes_out;
-    complex*            disp_x_out;
-    complex*            disp_y_out;
-
     // Values precached on initialization.
     float               P_h__L;                     /* Precached for tessendorf::P_h. Largest possible waves arising from a continuous wind of speed V. */
     float               P_h__l_2;                   /* Precached for tessendorf::P_h. Square of l (l being the wave size limit). */
+
+    static std::mutex fftCreationMutex;
 
 public:
     /**
@@ -72,7 +68,7 @@ public:
     *
     * The configure() method must be called before calling simulate(). Otherwise, a NULL pointer will be returned.
     */
-    Cartesian3*             simulate();
+    std::vector<VertexData> simulate();
 
 private:
     /**
