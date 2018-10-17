@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Source Files\fftw-3.3.5">
+      <UniqueIdentifier>{f748e153-8894-456d-bc87-2946bdb1f173}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ffmpeg">
+      <UniqueIdentifier>{35539605-995a-4645-b4d9-3007aadfec49}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="targetver.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="tessendorf.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="fftw-3.3.5\fftw3.h">
+      <Filter>Source Files\fftw-3.3.5</Filter>
+    </ClInclude>
+    <ClInclude Include="Cartesian3.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="stb_image_write.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="WaveTextureGenerator.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="tessendorf.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Library Include="fftw-3.3.5\libfftw3-3.lib">
+      <Filter>Source Files\fftw-3.3.5</Filter>
+    </Library>
+    <Library Include="fftw-3.3.5\libfftw3f-3.lib">
+      <Filter>Source Files\fftw-3.3.5</Filter>
+    </Library>
+  </ItemGroup>
+  <ItemGroup>
+    <CopyFileToFolders Include="ffmpeg\ffmpeg.exe">
+      <Filter>ffmpeg</Filter>
+    </CopyFileToFolders>
+  </ItemGroup>
+</Project>
