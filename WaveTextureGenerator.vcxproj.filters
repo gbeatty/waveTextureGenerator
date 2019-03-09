@@ -52,16 +52,8 @@
     <CopyFileToFolders Include="ffmpeg\ffmpeg.exe">
       <Filter>ffmpeg</Filter>
     </CopyFileToFolders>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="fftw-3.3.5\libfftw3-3.dll">
-      <Filter>Source Files\fftw-3.3.5</Filter>
-    </None>
-    <None Include="fftw-3.3.5\libfftw3f-3.dll">
-      <Filter>Source Files\fftw-3.3.5</Filter>
-    </None>
-    <None Include="fftw-3.3.5\libfftw3l-3.dll">
-      <Filter>Source Files\fftw-3.3.5</Filter>
-    </None>
+    <CopyFileToFolders Include="fftw-3.3.5\libfftw3-3.dll" />
+    <CopyFileToFolders Include="fftw-3.3.5\libfftw3f-3.dll" />
+    <CopyFileToFolders Include="fftw-3.3.5\libfftw3l-3.dll" />
   </ItemGroup>
 </Project>
