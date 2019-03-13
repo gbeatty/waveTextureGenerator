@@ -112,13 +112,15 @@ std::vector<VertexData> tessendorf::simulate()
             h_tildes_in[index] = h_tilde_k;
 
             Cartesian3 k_hat = k.Normalize();
-            displacement_x_in[index] = complex(0., -k_hat.x) * h_tilde_k; // Displacement by equation (29).
-            displacement_y_in[index] = complex(0., -k_hat.y) * h_tilde_k;
+            displacement_x_in[index] = complex(0., -k_hat.x / k_hat.Magnitude()) * h_tilde_k; // Displacement by equation (29).
+            displacement_y_in[index] = complex(0., -k_hat.y / k_hat.Magnitude()) * h_tilde_k;
+
+
 
             // Gradient by equation (20).
-            gradient_h_in[index] = complex(0., k.z) * h_tildes_in[index];
-            gradient_x_in[index] = complex(0., k.x) * displacement_x_in[index];
-            gradient_y_in[index] = complex(0., k.y) * displacement_y_in[index];
+            gradient_h_in[index] = complex(0., k.z) * h_tilde_k;
+            gradient_x_in[index] = complex(0., k.x) * h_tilde_k;
+            gradient_y_in[index] = complex(0., k.y) * h_tilde_k;
         }
     }
 
@@ -170,7 +172,8 @@ std::vector<VertexData> tessendorf::simulate()
                 real(gradient_y_out[index]) * sign,
                 real(gradient_h_out[index]) * sign);
 
-            const Cartesian3 normal = gradient.Normalize();
+            Cartesian3 normal(-gradient.x, -gradient.y, 1);
+			normal = normal.Normalize();
 
             vertices[index] = VertexData(displacement, normal);
 

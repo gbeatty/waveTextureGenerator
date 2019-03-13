@@ -39,7 +39,7 @@ int main()
         std::cout << "count = " << count++ << std::endl;
 		lock.unlock();
         
-        tessendorf tess(0.000001, 20, Cartesian3(0.0, -1.0, 0.0), .02, time, period, size, size, 4000, 4000, .1, 1.0);
+        tessendorf tess(0.000001, 10, Cartesian3(0.0, -1.0, 0.0), .02, time, period, size, size, 4000, 4000, .1, 1.0);
 
         std::vector<VertexData> vertices = tess.simulate();
 
@@ -57,6 +57,8 @@ int main()
                 Cartesian3 scaledNormal = vertices[index].Normal * 128.0;
                 Cartesian3 shiftedScaledNormal = scaledNormal + 128.0;
                 normalVectorPixels.push_back(shiftedScaledNormal.x);
+                normalVectorPixels.push_back(shiftedScaledNormal.y);
+                normalVectorPixels.push_back(shiftedScaledNormal.z);
             }
         }
 
@@ -69,7 +71,7 @@ int main()
         auto normalPath = outputDir / normalFileName.str();
 
         stbi_write_png(heightfieldPath.string().c_str(), size, size, 1, &heightFieldPixels[0], 0);
-        stbi_write_png(normalPath.string().c_str(), size, size, 1, &normalVectorPixels[0], 0);
+        stbi_write_png(normalPath.string().c_str(), size, size, 3, &normalVectorPixels[0], 0);
     }
 #ifndef _DEBUG
     );
